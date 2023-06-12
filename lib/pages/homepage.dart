@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:coffee_app_ui/utilities/coffee_tile.dart';
+import 'package:coffee_app_ui/utilities/special.dart';
 
 class Homepage extends StatefulWidget {
   const Homepage({super.key});
@@ -50,9 +51,8 @@ class _HomepageState extends State<Homepage> with TickerProviderStateMixin {
           BottomNavigationBarItem(icon: Icon(Icons.favorite), label: ''),
           BottomNavigationBarItem(icon: Icon(Icons.notifications), label: ''),
         ],
-         currentIndex: _selectedIndex,
+        currentIndex: _selectedIndex,
         onTap: _onItemTapped,
-
       ),
       body: DefaultTabController(
         length: 6,
@@ -82,11 +82,11 @@ class _HomepageState extends State<Homepage> with TickerProviderStateMixin {
                             color: Color(0xff4d4f52),
                           ),
                         ),
-                        // Image.asset(
-                        //   "images/latte.jpg",
-                        //   height: 50,
-                        //   width: 50,
-                        // ),
+                        Image.asset(
+                          "images/latte.jpg",
+                          height: 50,
+                          width: 50,
+                        ),
                       ],
                     ),
                     const SizedBox(
@@ -113,7 +113,8 @@ class _HomepageState extends State<Homepage> with TickerProviderStateMixin {
                       child: TextField(
                         decoration: InputDecoration(
                             hintText: "Find your coffee...",
-                            hintStyle: const TextStyle(color: Color(0xff3c4046)),
+                            hintStyle:
+                                const TextStyle(color: Color(0xff3c4046)),
                             border: InputBorder.none,
                             prefixIcon: Icon(
                               Icons.search,
@@ -122,73 +123,63 @@ class _HomepageState extends State<Homepage> with TickerProviderStateMixin {
                       ),
                     ),
                     const SizedBox(
-                height: 20,
-              ),
-              TabBar(
-                  isScrollable: true,
-                  controller: tabController,
-                  labelColor: const Color(0xffd17842),
-                  labelStyle: const TextStyle(fontWeight: FontWeight.bold),
-                  unselectedLabelColor: const Color(0xff3c4046),
-                  //indicator:  CircleTabIndicator(color: Color(0xffd17842), radius: 4),
-      
-                  tabs: const [
-                    Tab(
-                      text: "Cappuccino",
+                      height: 20,
                     ),
-                    Tab(
-                      text: "Americano",
-                    ),
-                    Tab(
-                      text: "Espresso",
-                    ),
-                    Tab(
-                      text: "Mocha",
-                    ),
-                    Tab(
-                      text: "Macchiato",
-                    ),
-                    Tab(
-                      text: "Doppio",
-                    ),
-                  ]),
+                    TabBar(
+                        isScrollable: true,
+                        controller: tabController,
+                        labelColor: const Color(0xffd17842),
+                        labelStyle:
+                            const TextStyle(fontWeight: FontWeight.bold),
+                        unselectedLabelColor: const Color(0xff3c4046),
+                        //indicator:  CircleTabIndicator(color: Color(0xffd17842), radius: 4),
 
-                  //wrapping with expanded is needed as it may affect the view with tabcontroller
-                  Expanded(
+                        tabs: const [
+                          Tab(
+                            text: "Cappuccino",
+                          ),
+                          Tab(
+                            text: "Americano",
+                          ),
+                          Tab(
+                            text: "Espresso",
+                          ),
+                          Tab(
+                            text: "Mocha",
+                          ),
+                          Tab(
+                            text: "Macchiato",
+                          ),
+                          Tab(
+                            text: "Doppio",
+                          ),
+                        ]),
+
+                    //wrapping with expanded is needed as it may affect the view with tabcontroller
+                    Expanded(
+                        child: TabBarView(controller: tabController, children: [
+                      CoffeeTile(),
+                      CoffeeTile(),
+                      CoffeeTile(),
+                      CoffeeTile(),
+                      CoffeeTile(),
+                      CoffeeTile(),
+                    ])),
+                    const Text(
+                      "Special for you",
+                      style: TextStyle(
+                          color: Colors.white,
+                          fontSize: 20,
+                          fontWeight: FontWeight.bold),
+                    ),
+                    const SizedBox(
+                      height: 20,
+                    ),
                     
-                    child: TabBarView(
-                      controller: tabController,
-                      children: [
-                         CoffeeTile(),
-                          CoffeeTile(),
-                          CoffeeTile(),
-                          CoffeeTile(),
-                          CoffeeTile(),
-                          CoffeeTile(),
-
-                    ])
-                   
-                         ),
-              const Text(
-                "data",
-                style: TextStyle(
-                    color: Colors.white,
-                    fontSize: 20,
-                    fontWeight: FontWeight.bold),
-              ),
-              const SizedBox(
-                    height: 20,
-                  ),
-      
-      
                   ],
                 ),
               ),
-      
-              
-      
-              
-              
+              Special(),
             ],
           ),
         ),
@@ -198,61 +189,61 @@ class _HomepageState extends State<Homepage> with TickerProviderStateMixin {
 }
 
 // //search Bar
-            // Padding(
-            //   padding: const EdgeInsets.all(20),
-            //   child: TextField(
-            //     decoration: InputDecoration(
-            //       prefixIcon: const Icon(Icons.search),
-            //       hintText: 'Find your coffee',
-            //       focusedBorder: OutlineInputBorder(
-            //         borderSide: BorderSide(color: Colors.grey.shade600),
-            //       ),
-            //       enabledBorder: OutlineInputBorder(
-            //         borderSide: BorderSide(color: Colors.grey.shade600),
-            //       ),
-            //     ),
-            //   ),
-            // ),
-            // const SizedBox(
-            //   height: 25,
-            // ),
-            //Listview tile
+// Padding(
+//   padding: const EdgeInsets.all(20),
+//   child: TextField(
+//     decoration: InputDecoration(
+//       prefixIcon: const Icon(Icons.search),
+//       hintText: 'Find your coffee',
+//       focusedBorder: OutlineInputBorder(
+//         borderSide: BorderSide(color: Colors.grey.shade600),
+//       ),
+//       enabledBorder: OutlineInputBorder(
+//         borderSide: BorderSide(color: Colors.grey.shade600),
+//       ),
+//     ),
+//   ),
+// ),
+// const SizedBox(
+//   height: 25,
+// ),
+//Listview tile
 
-            // Expanded(
-            //   child: ListView(
-            //             scrollDirection: Axis.horizontal,
+// Expanded(
+//   child: ListView(
+//             scrollDirection: Axis.horizontal,
 
-            //             children:  const [
-            //   CoffeeTile(),
-            //   // CoffeeTile(),
-            //   // CoffeeTile(),
-            //             ],
-            //           ),
-            // )
-            
-// class CircleTabIndicator extends Decoration {
-//   final BoxPainter _painter;
+//             children:  const [
+//   CoffeeTile(),
+//   // CoffeeTile(),
+//   // CoffeeTile(),
+//             ],
+//           ),
+// )
 
-//   CircleTabIndicator({required Color color, required double radius})
-//       : _painter = _CirclePainter(color, radius);
+class CircleTabIndicator extends Decoration {
+  final BoxPainter _painter;
 
-//   @override
-//   BoxPainter createBoxPainter([onChanged]) => _painter;
-// }
+  CircleTabIndicator({required Color color, required double radius})
+      : _painter = _CirclePainter(color, radius);
 
-// class _CirclePainter extends BoxPainter {
-//   final Paint _paint;
-//   final double radius;
+  @override
+  BoxPainter createBoxPainter([VoidCallback? onChanged]) => _painter;
+}
 
-//   _CirclePainter(Color color, this.radius)
-//       : _paint = Paint()
-//           ..color = color
-//           ..isAntiAlias = true;
+class _CirclePainter extends BoxPainter {
+  final Paint _paint;
+  final double radius;
 
-//   @override
-//   void paint(Canvas canvas, Offset offset, ImageConfiguration cfg) {
-//     final Offset circleOffset =
-//         offset + Offset(cfg.size?.width / 2, cfg.size?.height - radius);
-//     canvas.drawCircle(circleOffset, radius, _paint);
-//   }
-// }
+  _CirclePainter(Color color, this.radius)
+      : _paint = Paint()
+          ..color = color
+          ..isAntiAlias = true;
+
+  @override
+  void paint(Canvas canvas, Offset offset, ImageConfiguration cfg) {
+    final Offset circleOffset =
+        offset + Offset(cfg.size!.width / 2, cfg.size!.height - radius);
+    canvas.drawCircle(circleOffset, radius, _paint);
+  }
+}

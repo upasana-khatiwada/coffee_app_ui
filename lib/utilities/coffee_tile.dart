@@ -13,6 +13,13 @@ class CoffeeTile extends StatelessWidget {
     "With Chocolate Powder",
     "With Caramel Drizzle"
   ];
+  final List<String> coffee = [
+    "Cappuccino",
+    "Latte",
+    "Mocha",
+    "Americano"
+
+  ];
    final List<double> price = [4.29, 3.21, 6.46, 2.90];
 
    CoffeeTile({Key? key}) : super(key: key);
@@ -50,9 +57,9 @@ class CoffeeTile extends StatelessWidget {
                     Padding(
                       padding: const EdgeInsets.all(15),
                       child: Column(children: [
-                        const Text(
-                          "Cappuccino",
-                          style: TextStyle(color: Colors.white),
+                         Text(
+                          coffee[index],
+                          style: const TextStyle(color: Colors.white),
                         ),
                         const SizedBox(
                                 height: 3,
