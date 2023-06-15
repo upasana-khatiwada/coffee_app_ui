@@ -6,12 +6,12 @@ class Special extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
+    return SizedBox(
       height: 250,
      
      child: Column(
             children: [
-               Container(
+               SizedBox(
                 height: 140,
             width: MediaQuery.of(context).size.width,
             child: Row(children: [

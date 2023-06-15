@@ -1,3 +1,5 @@
+// ignore_for_file: sized_box_for_whitespace
+
 import 'package:flutter/material.dart';
 import 'package:coffee_app_ui/utilities/coffee_tile.dart';
 import 'package:coffee_app_ui/utilities/special.dart';
@@ -179,7 +181,7 @@ class _HomepageState extends State<Homepage> with TickerProviderStateMixin {
                   ],
                 ),
               ),
-              Special(),
+              const Special(),
             ],
           ),
         ),

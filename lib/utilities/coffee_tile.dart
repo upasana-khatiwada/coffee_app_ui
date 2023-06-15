@@ -1,3 +1,6 @@
+// ignore_for_file: sized_box_for_whitespace
+
+import 'package:coffee_app_ui/utilities/coffee_details.dart';
 import 'package:flutter/material.dart';
 
 class CoffeeTile extends StatelessWidget {
@@ -13,93 +16,111 @@ class CoffeeTile extends StatelessWidget {
     "With Chocolate Powder",
     "With Caramel Drizzle"
   ];
-  final List<String> coffee = [
-    "Cappuccino",
-    "Latte",
-    "Mocha",
-    "Americano"
+  final List<String> coffee = ["Cappuccino", "Latte", "Mocha", "Americano"];
+  final List<double> price = [4.29, 3.21, 6.46, 2.90];
 
-  ];
-   final List<double> price = [4.29, 3.21, 6.46, 2.90];
-
-   CoffeeTile({Key? key}) : super(key: key);
+  CoffeeTile({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return Container(
       height: 250,
-      child: ListView.builder(
-        shrinkWrap: true,
-        scrollDirection: Axis.horizontal,
-        itemCount: images.length,
-        itemBuilder: ((context, index) {
-          return Row(
-            children: [
-              // ignore: sized_box_for_whitespace
-              Container(
-                height: 250,
-                width: 160,
-                child: Column(
-                  children: [
-                    const SizedBox(
-                      height: 10,
-                    ),
-                    Container(
-                      height: 135,
-                      width: 140,
-                      decoration: BoxDecoration(
-                        borderRadius: BorderRadius.circular(20),
-                        image: DecorationImage(
-                            image: AssetImage(images[index]),
-                            fit: BoxFit.cover),
+      child: InkWell(
+        onTap: () {
+          Navigator.push(context,
+              MaterialPageRoute(builder: (context) => const CoffeeDetails()));
+        },
+        child: ListView.builder(
+          shrinkWrap: true,
+          scrollDirection: Axis.horizontal,
+          itemCount: images.length,
+          itemBuilder: ((context, index) {
+            return Row(
+              children: [
+                Container(
+                  height: 250,
+                  width: 160,
+                  decoration: BoxDecoration(
+                    color: const Color(0xff242931),
+                    borderRadius: BorderRadius.circular(20),
+                  ),
+                  child: Column(
+                    children: [
+                      const SizedBox(
+                        height: 10,
                       ),
-                    ),
-                    Padding(
-                      padding: const EdgeInsets.all(15),
-                      child: Column(children: [
-                         Text(
-                          coffee[index],
-                          style: const TextStyle(color: Colors.white),
+                      Container(
+                        height: 135,
+                        width: 140,
+                        decoration: BoxDecoration(
+                          borderRadius: BorderRadius.circular(20),
+                          image: DecorationImage(
+                              image: AssetImage(images[index]),
+                              fit: BoxFit.cover),
                         ),
-                        const SizedBox(
-                                height: 3,
+                      ),
+                      Padding(
+                        padding: const EdgeInsets.all(15),
+                        child: Column(children: [
+                          Text(
+                            coffee[index],
+                            style: const TextStyle(color: Colors.white),
+                          ),
+                          const SizedBox(
+                            height: 3,
+                          ),
+                          Text(
+                            ingredients[index],
+                            style: const TextStyle(
+                                color: Color(0xff919293), fontSize: 11),
+                          ),
+                          const SizedBox(
+                            height: 5,
+                          ),
+                          Row(
+                            children: [
+                              const Text(
+                                r'$ ',
+                                style: TextStyle(
+                                    color: Color(0xffd17842),
+                                    fontWeight: FontWeight.bold,
+                                    fontSize: 20),
                               ),
                               Text(
-                                ingredients[index],
+                                "${price[index]}",
                                 style: const TextStyle(
-                                    color: Color(0xff919293), fontSize: 11),
+                                    color: Colors.white,
+                                    fontSize: 20,
+                                    fontWeight: FontWeight.bold),
                               ),
                               const SizedBox(
-                                height: 5,
+                                width: 30,
                               ),
-                              Row(
-                                children: [
-                                  const Text(
-                                     r'$ ',
-                                        style: TextStyle(
-                                            color: Color(0xffd17842),
-                                            fontWeight: FontWeight.bold,
-                                            fontSize: 20),
-                                  ),
-                                   Text(
-                                        "${price[index]}",
-                                        style: const TextStyle(
-                                            color: Colors.white,
-                                            fontSize: 20,
-                                            fontWeight: FontWeight.bold),
-                                      )
-
-
-                                ],
-                              )
-                      ]),
-                    )
-                  ],
+                              Container(
+                                  height: 30,
+                                  width: 30,
+                                  decoration: BoxDecoration(
+                                      color: const Color(0xffd17842),
+                                      borderRadius: BorderRadius.circular(10)),
+                                  child: const Icon(
+                                    Icons.add,
+                                    color: Colors.white,
+                                    size: 20,
+                                  ))
+                            ],
+                          ),
+                        ]),
+                      )
+                    ],
+                  ),
                 ),
-              )
-            ],
-          );
-        }),
+                const SizedBox(
+                  width: 20,
+                ),
+              ],
+            );
+          }),
+        ),
       ),
     );
     // return Padding(
